@@ -27,6 +27,7 @@
     "bootstrap": "^3.3.5",
     "bootstrap-webpack": "0.0.3",
     "immstruct": "^2.0.0",
+    "jquery": "^2.1.4",
     "omniscient": "^3.2.0",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
