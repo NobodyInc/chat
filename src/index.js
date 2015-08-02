@@ -36,7 +36,19 @@ let Home = component(() => {
   return <div className="row"></div>
 }).jsx;
 
-let Chat = component(({chat_id: chat}) => {
+let Chat = component({
+  getInitialState: function() {
+    return {buffer: ""}
+  },
+  handleKeyPress: function(e) {
+    const buffer = this.state.buffer;
+    if(e.which === 13) {
+      this.props.chat_id.cursor("feed").push({"id": -1, "user_id": -1, "message": buffer});
+      this.setState({buffer: ""});
+    } else {
+      this.setState({buffer: buffer + String.fromCharCode(e.which)});
+    }
+  }}, function ({chat_id: chat}) {
   return <div className="row">
     <div className="col-sm-3 col-md-2 sidebar">
       <ul>{chat.cursor("users").toJS().map((user) => <li key={user.id}>{user.name}</li>)}</ul>
@@ -46,11 +58,17 @@ let Chat = component(({chat_id: chat}) => {
       <div className="row">
         <div className="">
           <ul className="nav nav-sidebar">{chat.cursor("feed").toJS().map((message) => <li>
-            <span>{"name"}</span><span>{message.message}</span>
+            <span>{chat.cursor(["users", message.user_id, "name"]).toJS()}</span><span>{message.message}</span>
           </li>)}</ul>
         </div>
       </div>
     </div>
+    <div className="row"><div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+      <div className="input-group input-group-lg">
+        <span className="input-group-addon" id="sizing-addon1">@</span>
+        <input type="text" className="form-control" placeholder="Message" aria-describedby="sizing-addon1" onKeyPress={this.handleKeyPress} value={this.state.buffer}/>
+      </div>
+    </div></div>
   </div>
 }).jsx;
 
