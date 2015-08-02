@@ -1,0 +1,15 @@
+.main {
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: lightgrey;
+}
+
+.sidebar {
+    position: fixed;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: blue;
+    background-color: lightblue;
+}
