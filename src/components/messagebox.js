@@ -4,7 +4,9 @@ let { PropTypes, Component } = React;
 
 export default class MessageBox extends Component {
   handleSubmit() {
-    this.props.handleMsg(this.refs.inputText.getDOMNode().value);
+    const node = this.refs.inputText.getDOMNode();
+    this.props.handleMsg(node.value);
+    node.value = "";
   }
 
   render() {
