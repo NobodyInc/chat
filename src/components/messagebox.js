@@ -11,7 +11,7 @@ export default class MessageBox extends Component {
   handleSubmit() {
     const node = this.refs.inputText.getDOMNode();
     this.props.handleMsg(node.value);
-    node.value = "";
+    node.value = '';
   }
 
   handleChange() {
@@ -49,5 +49,5 @@ MessageBox.propTypes = {
 MessageBox.defaultProps = {
   handleMsg: () => {},
   handleStatus: () => {},
-  timeout: 2000
+  timeout: 500
 };
