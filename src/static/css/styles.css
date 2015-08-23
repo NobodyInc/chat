@@ -1,13 +1,5 @@
-header {
-    width: 500px;
-}
-
 body {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 500px;
-  font-family: "Helvetica Neue",Helvetica,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 17px;
   line-height: 21px;
 }
@@ -36,10 +28,10 @@ footer {
   position: absolute;
   bottom: 22px;
   left: -5px;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent; 
+  border-bottom: 10px solid transparent;
   border-right: 10px solid #DADFE8;
   border-radius: 10px;
 }
