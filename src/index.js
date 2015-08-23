@@ -4,9 +4,14 @@ import { run, DefaultRoute, Route, RouteHandler } from "react-router";
 
 import { MessageBox, ChatWindow } from './components';
 
+//import Messages from './data';
+//let messages = Messages('http://localhost:3700');
+//messages.send();
+//messages.listen();
+
 let userId = Math.floor(Math.random() * 100000);
 
-let socket = io('http://localhost:3700');
+let socket = io('http://0.0.0.0:3700');
 
 //require("./static/css/ratchet");
 require("./static/css/styles.css");
@@ -22,9 +27,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    socket.on('message', data => {
-      this.setState({feed: data});
-    });
+    socket.on('message', feed => this.setState({feed}));
   }
 
   render() {
