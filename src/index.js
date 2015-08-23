@@ -1,8 +1,13 @@
 import * as React from 'react';
 import * as Router from 'react-router';
 import { run, DefaultRoute, Route, RouteHandler } from "react-router";
-
+//import * as socketio from 'socket.io';
+var io = require("socket.io-client");
 import MessageBox from './components/messagebox';
+
+let userId = Math.floor(Math.random() * 100000);
+
+let socket = io('http://localhost:3700');
 
 require("bootstrap-webpack");
 require("./static/css/styles.css");
@@ -10,30 +15,18 @@ require("./static/css/styles.css");
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      feed: [
-        {who: 0, message: "Yo!, You there?"},
-        {who: 1, message: "Yeah, sup?"},
-        {who: 0, message: "Let's grab lunch."},
-        {who: 1, message: "Erm, erm can't. Erm, erm sorry."},
-        {who: 0, message: "Ok, I'm not dissapointed"},
-        {who: 0, message: "No worries, next time."},
-        {who: 1, message: "fo sho"},
-      ]
-    }
+    this.state = {feed: []}
   }
-  //<div className="msg">
-  //  <div className="bubble">
-  //    <p>Yo! You there?</p>
-  //  </div>
-  //</div>
-  //<div className="msg msg-out">
-  //  <div className="bubble">
-  //    <p>Yeah, sup?</p>
-  //  </div>
-  //</div>
   handleMessage(value) {
-    this.setState({feed: this.state.feed.concat([{who: 1, message: value}])})
+    console.log('handler invoked');
+    socket.emit('send', {who: userId, message: value});
+  }
+  componentDidMount() {
+    console.log('mounted');
+    socket.on('message', data => {
+      console.log('data', data);
+      this.setState({feed: data});
+    });
   }
   render() {
     return (
@@ -45,12 +38,12 @@ class App extends React.Component {
           <div className="convo"> {
            this.state.feed.map((m) => {
              return (
-               <div className={"msg" + (m.who === 1? " msg-out" : "")}>
+               <div className={"msg" + (m.who === userId? " msg-out" : "")}>
                  <div className="bubble">
                    <p>{m.message}</p>
                  </div>
                </div>
-             )
+             );
            })
           } </div>
           <footer>
