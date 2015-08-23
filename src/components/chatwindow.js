@@ -20,7 +20,7 @@ export default class ChatWindow extends Component {
     setInterval(() => {update(Date().now)}, updateInterval);
 
     new Tween({scrollTop: this.scrollTop})
-      .to({scrollTop: newScrollTop + 20}, scrollDuration)
+      .to({scrollTop: newScrollTop}, scrollDuration)
       .easing(Easing.Quadratic.Out)
       .onUpdate(function() { node.scrollTop = this.scrollTop; })
       .start();
