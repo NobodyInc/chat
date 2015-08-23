@@ -19,7 +19,7 @@ require("./static/css/styles.css");
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {feed: []}
+    this.state = {feed: [], users: {}}
   }
 
   handleMessage(value) {
@@ -28,6 +28,12 @@ class App extends React.Component {
 
   componentDidMount() {
     socket.on('message', feed => this.setState({feed}));
+    socket.on('status', users => this.setState({users}));
+  }
+
+  handleStatus(active) {
+    console.log('status:', active? "active" : "inactive");
+    socket.emit('status', {who: userId, active});
   }
 
   render() {
@@ -40,11 +46,18 @@ class App extends React.Component {
           isSelf={m => m.who === userId}
           feed={this.state.feed}
         />
+        <p> {
+          Object.keys(this.state.users)
+            .filter((k) => this.state.users[k].active)
+            .map((k) => (<span>{"User: " + k + " is typing.."}</span>)
+          )
+        } </p>
         <footer>
           <hr/>
           <MessageBox
             placeholder={'Say something nice...'}
             handleMsg={this.handleMessage.bind(this)}
+            handleStatus={this.handleStatus.bind(this)}
           />
         </footer>
       </div>
@@ -58,3 +71,7 @@ const routes = (
 );
 
 run(routes, (Handler) => React.render(<Handler/>, document.body));
+
+//if (state.user) {
+//  run(routes, (Handler) => React.render(<Handler/>, document.body));
+//} else { }

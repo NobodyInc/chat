@@ -20,10 +20,10 @@ export default class MessageBox extends Component {
   }
 
   handleChange() {
-    let {active, timer, props: {timeout}} = this;
-    if (!this.active) handler(true);
+    let {active, timer, props: {timeout, handleStatus}} = this;
+    if (!this.active) handleStatus(true);
     if (timeout) clearTimeout(this.active);
-    this.active = setTimeout(() => handler(this.active = false), timeout);
+    this.active = setTimeout(() => handleStatus(this.active = false), timeout);
   }
 
   render() {
@@ -48,10 +48,11 @@ MessageBox.propTypes = {
   handleMsg: PropTypes.func,
   placeholder: PropTypes.string,
   timeout: PropTypes.number,
-  onStatus: PropTypes.func
+  handleStatus: PropTypes.func
 };
 
 MessageBox.defaultProps = {
   handleMsg: () => {},
+  handleStatus: () => {},
   timeout: 2000
 };
