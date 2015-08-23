@@ -32,11 +32,17 @@ class App extends React.Component {
   }
 
   handleStatus(active) {
-    console.log('status:', active? "active" : "inactive");
     socket.emit('status', {who: userId, active});
   }
 
   render() {
+    const typingUsers = Object.keys(this.state.users)
+      .filter(k => k != userId)
+      .filter(k => this.state.users[k].active)
+      .map(k => (<span>{"User: " + k + " is typing.."}</span>));
+
+    console.log('tu', typingUsers);
+
     return (<div>
       <header className="bar bar-nav">
         <h1 className="title">Messages</h1>
@@ -46,12 +52,7 @@ class App extends React.Component {
           isSelf={m => m.who === userId}
           feed={this.state.feed}
         />
-        <p> {
-          Object.keys(this.state.users)
-            .filter((k) => this.state.users[k].active)
-            .map((k) => (<span>{"User: " + k + " is typing.."}</span>)
-          )
-        } </p>
+        <p> { typingUsers } </p>
         <footer>
           <hr/>
           <MessageBox

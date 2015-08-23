@@ -2,11 +2,6 @@ import * as React from 'react';
 
 let { PropTypes, Component } = React;
 
-
-function handler(active) {
-  console.log('active', active);
-}
-
 export default class MessageBox extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +15,7 @@ export default class MessageBox extends Component {
   }
 
   handleChange() {
-    let {active, timer, props: {timeout, handleStatus}} = this;
+    let { active, props: { timeout, handleStatus } } = this;
     if (!this.active) handleStatus(true);
     if (timeout) clearTimeout(this.active);
     this.active = setTimeout(() => handleStatus(this.active = false), timeout);
