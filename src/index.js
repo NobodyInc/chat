@@ -41,8 +41,6 @@ class App extends React.Component {
       .filter(k => this.state.users[k].active)
       .map(k => (<span>{"User: " + k + " is typing.."}</span>));
 
-    console.log('tu', typingUsers);
-
     return (<div>
       <header className="bar bar-nav">
         <h1 className="title">Messages</h1>
