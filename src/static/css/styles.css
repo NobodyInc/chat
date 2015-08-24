@@ -20,7 +20,7 @@ footer {
 .msg {
   display: flex;
   position: relative;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
 .msg:before {
@@ -103,4 +103,14 @@ footer {
 
 .sn-form-appear.sn-form-appear-active {
   opacity: 1;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  position: absolute;
+  background-color:lightblue;
+  left: -50px;
+  bottom: 15px;
 }

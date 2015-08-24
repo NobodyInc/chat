@@ -17,7 +17,7 @@ export default class ChatPage extends React.Component {
   }
 
   handleMessage(value) {
-    data.sendMessage(this.userId, value);
+    data.sendMessage(this.state.user, value);
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ export default class ChatPage extends React.Component {
   }
 
   handleSubmit() {
-    this.setState({user: data.user = this.refs.sn.getDOMNode()});
+    this.setState({user: data.user = this.refs.sn.getDOMNode().value});
   }
 
   render() {
@@ -48,7 +48,7 @@ export default class ChatPage extends React.Component {
       </header>
       <div className='content content-padded'>
         <ChatWindow
-          isSelf={m => m.who === this.userId}
+          isSelf={m => m.who === this.state.user}
           feed={this.state.feed}
         />
         <p> { typingUsers } </p>
