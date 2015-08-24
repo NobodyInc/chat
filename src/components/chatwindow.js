@@ -37,7 +37,7 @@ export default class ChatWindow extends Component {
           <div className="bubble">
             <p>{m.message}</p>
           </div>
-          <span className='avatar'/>
+          {isSelf(m)? null :  <span className='avatar'/>}
         </div>
       ))
     } </div>);
