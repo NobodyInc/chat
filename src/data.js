@@ -1,15 +1,16 @@
 import io from "socket.io-client";
 
-export default class Messages {
-  constructor(url) {
-    this.socket = io(url);
-  }
+const socket = io('http://0.0.0.0:3700');
 
-  send(userId, message) {
-    this.socket.emit('send', {who: userId, message: value});
-  }
-
-  listen(fn) {
-    this.socket.on('message', fn);
-  }
+export function sendMessage(userId, message) {
+  socket.emit('send', {who: userId, message});
 }
+
+export function listen(channel, fn) {
+  socket.on(channel, fn);
+}
+
+export function getUser() {
+  return Math.floor(Math.random() * 100000);
+}
+

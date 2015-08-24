@@ -5,6 +5,9 @@ let app = express();
 
 let io = socketio.listen(app.listen(3700));
 
+//let feed = {
+//};
+
 let feed = [];
 let users = {};
 
