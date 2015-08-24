@@ -2,7 +2,7 @@ import * as React from 'react';
 import io from "socket.io-client";
 import { run, DefaultRoute, Route, RouteHandler } from "react-router";
 
-import { MessageBox, ChatWindow } from './components';
+import { MessageBox, ChatWindow, typingUsers} from './components';
 
 //import Messages from './data';
 //let messages = Messages('http://localhost:3700');

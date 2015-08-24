@@ -42,3 +42,11 @@ export default class ChatWindow extends Component {
     } </div>);
   }
 }
+
+ChatWindow.propTypes = {
+  isSelf: PropTypes.func
+};
+
+ChatWindow.propTypes = {
+  isSelf: () => true
+};
