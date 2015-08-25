@@ -1,13 +1,8 @@
 import * as React from 'react/addons';
-import * as data from './data';
+import { socket } from './data';
+import { MessageBox, ChatWindow, typingUsers, } from './components';
 
 let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
-import {
-  MessageBox,
-  ChatWindow,
-  typingUsers,
-} from './components';
 
 export default class ChatPage extends React.Component {
   constructor(props) {
@@ -17,12 +12,11 @@ export default class ChatPage extends React.Component {
   }
 
   handleMessage(value) {
-    data.sendMessage(this.state.user, value);
+    socket.emit('send', {who: this.state.user, message: value});
   }
 
   componentDidMount() {
-    this.setState({user: data.user});
-    data.listen('message', feed => this.setState({feed}));
+    socket.on('message', feed => this.setState({feed}))
   }
 
   handleStatus(active) {
@@ -30,14 +24,14 @@ export default class ChatPage extends React.Component {
   }
 
   handleSubmit() {
-    this.setState({user: data.user = this.refs.sn.getDOMNode().value});
+    this.setState({user: this.refs.sn.getDOMNode().value});
   }
 
   render() {
     return (
       <div>
         {
-          data.user ? null :
+          this.state.user ? null :
           <ReactCSSTransitionGroup transitionName='sn-form' transitionAppear={true}>
             <form id='screenname' onSubmit={this.handleSubmit.bind(this)}>
               <input ref='sn' type='text' placeholder='Screen Name'/>
