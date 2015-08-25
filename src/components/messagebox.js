@@ -43,11 +43,11 @@ MessageBox.propTypes = {
   handleMsg: PropTypes.func,
   placeholder: PropTypes.string,
   timeout: PropTypes.number,
-  handleStatus: PropTypes.func
+  handleStatus: PropTypes.func,
 };
 
 MessageBox.defaultProps = {
   handleMsg: () => {},
   handleStatus: () => {},
-  timeout: 500
+  timeout: 500,
 };

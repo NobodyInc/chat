@@ -9,15 +9,15 @@ export default class typingUsers extends Component {
         //.filter(k => k != userId)
         .filter(this.props.isSelf)
         .filter(k => this.state.users[k].active)
-        .map(k => (<span>{"User: " + k + " is typing.."}</span>))
+        .map(k => (<span>{'User: ' + k + ' is typing..'}</span>))
     } </p>);
   }
 }
 
 typingUsers.propTypes = {
-  isSelf: PropTypes.func
+  isSelf: PropTypes.func,
 };
 
 typingUsers.propTypes = {
-  isSelf: () => true
+  isSelf: () => true,
 };

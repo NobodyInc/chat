@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { run, DefaultRoute, Route, RouteHandler } from "react-router";
+import { run, DefaultRoute, Route, RouteHandler } from 'react-router';
 
 import * as data from './data';
 
@@ -24,4 +24,3 @@ const routes = (
 );
 
 run(routes, (Handler) => React.render(<Handler/>, document.body));
-

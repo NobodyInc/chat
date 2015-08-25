@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Tween, Easing, update} from "tween.js";
+import { Tween, Easing, update } from 'tween.js';
 
 let { PropTypes, Component } = React;
 
@@ -14,10 +14,10 @@ export default class ChatWindow extends Component {
   }
 
   componentDidUpdate() {
-    const node = this.refs.convo.getDOMNode(),
-          newScrollTop = node.scrollHeight - node.offsetHeight;
+    const node = this.refs.convo.getDOMNode();
+    const newScrollTop = node.scrollHeight - node.offsetHeight;
 
-    setInterval(() => {update(Date().now)}, updateInterval);
+    setInterval(() => { update(Date().now); }, updateInterval);
 
     new Tween({scrollTop: this.scrollTop})
       .to({scrollTop: newScrollTop}, scrollDuration)
@@ -31,13 +31,13 @@ export default class ChatWindow extends Component {
   render() {
     let { feed, isSelf } = this.props;
 
-    return (<div ref="convo" className="convo"> {
+    return (<div ref='convo' className='convo'> {
       this.props.feed.map(m => (
-        <div className={cx({"msg": true, "msg-out": isSelf(m)})}>
-          <div className="bubble">
+        <div className={cx({'msg': true, 'msg-out': isSelf(m)})}>
+          <div className='bubble'>
             <p>{m.message}</p>
           </div>
-          {isSelf(m)? null :  <span className='avatar'/>}
+          {isSelf(m) ? null :  <span className='avatar'/>}
         </div>
       ))
     } </div>);
@@ -45,9 +45,9 @@ export default class ChatWindow extends Component {
 }
 
 ChatWindow.propTypes = {
-  isSelf: PropTypes.func
+  isSelf: PropTypes.func,
 };
 
 ChatWindow.propTypes = {
-  isSelf: () => true
+  isSelf: () => true,
 };

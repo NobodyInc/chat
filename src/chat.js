@@ -12,7 +12,7 @@ import {
 export default class ChatPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {feed: [], users: {}, user: null}
+    this.state = {feed: [], users: {}, user: null};
     this.chatId = this.props.params.chatId;
   }
 

@@ -19,10 +19,7 @@ io.sockets.on('connection', (socket) => {
   });
 
   socket.on('status', (data) => {
-     users[data.who] = {active: data.active};
-     io.sockets.emit('status', users);
+    users[data.who] = {active: data.active};
+    io.sockets.emit('status', users);
   });
 });
-
-
-

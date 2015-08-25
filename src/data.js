@@ -1,4 +1,4 @@
-import io from "socket.io-client";
+import io from 'socket.io-client';
 
 const socket = io('http://0.0.0.0:3700');
 
@@ -11,5 +11,3 @@ export function sendMessage(userId, message) {
 export function listen(channel, fn) {
   socket.on(channel, fn);
 }
-
-
