@@ -34,33 +34,42 @@ export default class ChatPage extends React.Component {
   }
 
   render() {
-    return (<div>
-      { data.user ? null :
-        <ReactCSSTransitionGroup transitionName='sn-form' transitionAppear={true}>
-          <form id='screenname' onSubmit={this.handleSubmit.bind(this)}>
-            <input ref='sn' type='text' placeholder='Screen Name'/>
-            <button className='btn btn-positive btn-block'>Ok</button>
-          </form>
-        </ReactCSSTransitionGroup>
-      }
-      <header className='bar bar-nav'>
-        <h1 className='title'>Messages</h1>
-      </header>
-      <div className='content content-padded'>
-        <ChatWindow
-          isSelf={m => m.who === this.state.user}
-          feed={this.state.feed}
-        />
-        <p> { typingUsers } </p>
-        <footer>
-          <hr/>
-          <MessageBox
-            placeholder={'Say something nice...'}
-            handleMsg={this.handleMessage.bind(this)}
-            handleStatus={this.handleStatus.bind(this)}
+    return (
+      <div>
+        {
+          data.user ? null :
+          <ReactCSSTransitionGroup transitionName='sn-form' transitionAppear={true}>
+            <form id='screenname' onSubmit={this.handleSubmit.bind(this)}>
+              <input ref='sn' type='text' placeholder='Screen Name'/>
+              <button className='btn btn-positive btn-block'>Ok</button>
+            </form>
+          </ReactCSSTransitionGroup>
+        }
+
+        <header className='bar bar-nav'>
+          <h1 className='title'>Messages</h1>
+        </header>
+
+        <div className='content content-padded'>
+
+          <ChatWindow
+            isSelf={m => m.who === this.state.user}
+            feed={this.state.feed}
           />
-        </footer>
+
+          <p> { typingUsers } </p>
+
+          <footer>
+            <hr/>
+            <MessageBox
+              placeholder={'Say something nice...'}
+              handleMsg={this.handleMessage.bind(this)}
+              handleStatus={this.handleStatus.bind(this)}
+            />
+          </footer>
+
+        </div>
       </div>
-    </div>);
+    );
   }
 }

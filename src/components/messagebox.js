@@ -22,20 +22,19 @@ export default class MessageBox extends Component {
   }
 
   render() {
-    return (<form onSubmit={this.handleSubmit.bind(this)}>
-      <input
-        ref='inputText'
-        type='text'
-        placeholder={this.props.placeholder}
-        onChange= {this.handleChange.bind(this)}
-      />
-      <button
-        type='submit'
-        className='btn btn-positive btn-block'
-      >
-        Send
-      </button>
-    </form>);
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <input
+          ref='inputText'
+          type='text'
+          placeholder={this.props.placeholder}
+          onChange= {this.handleChange.bind(this)}
+        />
+        <button type='submit' className='btn btn-positive btn-block'>
+          Send
+        </button>
+      </form>
+    );
   }
 }
 
