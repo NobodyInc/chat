@@ -53,7 +53,7 @@ export default class ChatPage extends React.Component {
 
           <p> { typingUsers } </p>
 
-          <footer>
+          <footer className={'messagebox'}>
             <hr/>
             <MessageBox
               placeholder={'Say something nice...'}
