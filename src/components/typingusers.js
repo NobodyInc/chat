@@ -7,10 +7,10 @@ export default class typingUsers extends Component {
     return (
       <p> {
         Object.keys(this.state.users)
-          //.filter(k => k != userId)
+          //.filter(user => user != userId)
           .filter(this.props.isSelf)
-          .filter(k => this.state.users[k].active)
-          .map(k => (<span>{'User: ' + k + ' is typing..'}</span>))
+          .filter(user => this.state.users[user].active)
+          .map(user => (<span>{'User: ' + user + ' is typing..'}</span>))
       } </p>
     );
   }

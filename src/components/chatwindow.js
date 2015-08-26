@@ -33,12 +33,16 @@ export default class ChatWindow extends Component {
 
     return (
       <div ref='convo' className='convo'> {
-        this.props.feed.map(m => (
-          <div className={cx({'msg': true, 'msg-out': isSelf(m)})}>
+        this.props.feed.map(message => (
+
+          <div className={ cx({ 'msg': true, 'msg-out': isSelf(message) }) }>
+
             <div className='bubble'>
-              <p>{m.message}</p>
+              <p>{message.text}</p>
             </div>
-            {isSelf(m) ? null :  <span className='avatar'/>}
+
+            {isSelf(message) ? null : <span className='avatar'/>}
+
           </div>
         ))
       } </div>

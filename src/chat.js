@@ -12,11 +12,11 @@ export default class ChatPage extends React.Component {
   }
 
   handleMessage(value) {
-    socket.emit('send', {who: this.state.user, message: value});
+    socket.emit('send', {who: this.state.user, text: value});
   }
 
   componentDidMount() {
-    socket.on('message', feed => this.setState({feed}))
+    socket.on('message', feed => this.setState({feed}));
   }
 
   handleStatus(active) {
