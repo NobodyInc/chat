@@ -45,24 +45,21 @@ export default class ChatPage extends React.Component {
         </header>
 
         <div className='content content-padded'>
-
           <ChatWindow
             isSelf={m => m.who === this.state.user}
             feed={this.state.feed}
           />
-
           <p> { typingUsers } </p>
-
-          <footer className={'messagebox'}>
-            <hr/>
-            <MessageBox
-              placeholder={'Say something nice...'}
-              handleMsg={this.handleMessage.bind(this)}
-              handleStatus={this.handleStatus.bind(this)}
-            />
-          </footer>
-
         </div>
+
+        <footer className={'messagebox'}>
+          <MessageBox
+            placeholder={'Say something nice...'}
+            handleMsg={this.handleMessage.bind(this)}
+            handleStatus={this.handleStatus.bind(this)}
+          />
+        </footer>
+
       </div>
     );
   }

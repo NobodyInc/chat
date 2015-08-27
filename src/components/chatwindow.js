@@ -32,7 +32,7 @@ export default class ChatWindow extends Component {
     let { feed, isSelf } = this.props;
 
     return (
-      <div ref='convo' className='convo'> {
+      <div ref='convo' className='feed'> {
         this.props.feed.map(message => (
 
           <div className={ cx({ 'msg': true, 'msg-out': isSelf(message) }) }>

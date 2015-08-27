@@ -1,6 +1,27 @@
+:root {
+  --bg: #373E48;
+}
+
 .messagebox {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #FFF;
+  background-color: var(--bg);
+}
+
+.messagebox form {
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.messagebox input[type=text] {
+  margin: 0 10px;
+}
+
+.messagebox button {
+  margin: 0 10px 0 0;
+  padding: 0;
+  max-width: 100px;
+  height: 35px;
 }

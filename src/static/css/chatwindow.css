@@ -1,6 +1,13 @@
-.convo {
+:root {
+  --blue-bubble-bg: #4B8DFF;
+  --blue-bubble-text: #FFF;
+  --grey-bubble-bg: #E6EBF5;
+  --grey-bubble-text: #5A5F69;
+}
+
+.feed {
   overflow-y: scroll;
-  height: 70vh;
+  height: calc(100vh - (60px + 54px));
   padding-bottom: 50px;
 }
 
@@ -25,16 +32,16 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #DADFE8;
+  border-right: 10px solid var(--grey-bubble-bg);
   border-radius: 10px;
 }
 
 /* right chat bubble flick */
 .msg.msg-out:before {
   left: auto;
-  right: -5px;
+  right: 10px;
   border-right: 0px solid transparent;
-  border-left: 10px solid #2DA3FA;
+  border-left: 10px solid var(--blue-bubble-bg);
   border-radius: 10px;
 }
 
@@ -53,17 +60,18 @@
   border-radius: 7.5px;
   padding: 14px 10px 5px 10px;
   margin-bottom: 20px;
-  background-color: #DADFE8;
+  background-color: var(--grey-bubble-bg);
 }
 
 .bubble p {
-  color: #34383E;
+  color: var(--grey-bubble-text);
 }
 
 .msg-out .bubble {
-  background-color: #2DA3FA;
+  margin-right: 15px;
+  background-color: var(--blue-bubble-bg);
 }
 
 .msg-out .bubble p {
-  color: #FFF;
+  color: var(--blue-bubble-text);
 }
