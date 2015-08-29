@@ -1,6 +1,6 @@
 import * as React from 'react';
-import cx from 'classnames';
 import { Tween, Easing, update } from 'tween.js';
+import Bubble from './bubble.js';
 
 let { PropTypes, Component } = React;
 
@@ -35,15 +35,9 @@ export default class ChatWindow extends Component {
       <div ref='convo' className='feed'> {
         this.props.feed.map(message => (
 
-          <div className={ cx({ 'msg': true, 'msg-out': isSelf(message) }) }>
+          isSelf(message) ? <Bubble type='sent' content={message.text}/>
+                          : <Bubble type='received' content={message.text}/>
 
-            <div className='bubble'>
-              <p>{message.text}</p>
-            </div>
-
-            {isSelf(message) ? null : <span className='avatar'/>}
-
-          </div>
         ))
       } </div>
     );

@@ -46,7 +46,7 @@ export default class ChatPage extends React.Component {
 
         <div className='content content-padded'>
           <ChatWindow
-            isSelf={m => m.who === this.state.user}
+            isSelf={message => message.who === this.state.user}
             feed={this.state.feed}
           />
           <p> { typingUsers } </p>
